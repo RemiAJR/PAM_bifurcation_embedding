@@ -28,9 +28,6 @@ class Linear(Module):
             bound = math.sqrt(1 / input_dim)
 
         self.weight = self.rnd.uniform(low=-bound, high=bound, size=(output_dim, input_dim)).astype(self.dtype)
-
-     #   self.bias = np.random.choice([-1, 1], size=output_dim) * np.random.uniform(low=0.8, high=1.0, size=output_dim)
-
          # Generate bias values using positive and negative intervals
         if LowboundBias is not None and HighboundBias is not None:
             num_samples = output_dim // 2
@@ -65,9 +62,6 @@ class ESN(Module):
 
         self.theBiasFactor = theBiasFactor
         self.theBias = self.rnd.uniform(low = -self.kbias, high = self.kbias, size=(self.dim,))
-
-        #self.theBias = np.full((self.dim,), 0.65)
-        #self.theBias = np.random.choice([-0, 0.55], size=(self.dim,))
 
         self.shrinkingFactor = shrinkingFactor
         self.divideStates = divideStates
@@ -106,17 +100,8 @@ class ESN(Module):
        # x_transformed[::2] = (x[::2])   #even nodes are unchanged
        # x_transformed[1::2] = x[1::2]**2#odd nodes are squared
 
-        #x_transformed = np.copy(x)
-
-
         x_transformed = np.copy(x)
-
         x_transformed[1::2] = np.abs(x_transformed[1::2]) *x_transformed[1::2]
-
-
-    # for i in range(x_transformed.shape[0]):
-           #if not(i % 2 == 0):  # Odd indices
-            #x_transformed[i] = np.abs(x_transformed[i])*x_transformed[i]
 
         return x_transformed
 

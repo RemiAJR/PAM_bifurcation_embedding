@@ -29,15 +29,16 @@ The project demonstrates **bifurcation embedding** of electrical resistance in P
 
 ## Requirements
 
-- Python 3.x
+- Python 3.7+
 - NumPy
 - SciPy
 - Matplotlib
+- Jupyter Notebook
 
 ## Installation
 
 ```bash
-pip install numpy scipy matplotlib
+pip install numpy scipy matplotlib jupyter
 ```
 
 ## Usage
